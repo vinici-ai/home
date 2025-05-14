@@ -285,6 +285,22 @@
             border-radius: 8px;
             box-shadow: var(--shadow);
         }
+        /* pilot Statement */
+        .pilot {
+            background-color: #212121;
+            position: relative;
+        }
+
+        .pilot::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 10% 90%, rgba(255, 51, 102, 0.1), transparent 50%);
+            z-index: 1;
+        }
 
         /* Solution */
         .solution {
