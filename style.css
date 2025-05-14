@@ -1026,7 +1026,9 @@
 
 /* General adjustments for better mobile experience */
 @media (max-width: 768px) {
-
+    body{
+        width: 100vw;
+    }
     /* 1. Fix: Content going under the fixed header */
     /* Add padding to the top of the first main content section (hero)
        to account for the fixed header's height.
@@ -1137,6 +1139,9 @@
 
 /* Further refinements for very small screens (e.g., up to 480px wide) */
 @media (max-width: 480px) {
+    body{
+        width: 100vw;
+    }
     .hero {
         padding-top: 60px; /* Header might be slightly more compact, adjust if needed */
     }
