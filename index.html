@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,22 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Vinici - Democracy tech solution that analyzes political rhetoric to identify manipulative language and hold politicians accountable.">
     <title>Vinici | Know them by what they say, hold them by what they do</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-  emailjs.init("cle3P8QI6-LSwnNzG");
-</script>
+
     <style>
-        * {
-    font-family: "Noto Sans", sans-serif !important;
-}
         :root {
             --primary-dark: #1A1A1A;
             --accent-start: #FF3366;
@@ -37,10 +28,11 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            /* font-family: "Noto Sans", sans-serif; /* General fallback, but body will specify */
         }
 
         body {
-            font-family: 'Open Sans', sans-serif;
+            font-family: "Noto Sans", sans-serif; /* Main body font */
             background-color: var(--primary-dark);
             color: var(--text-color);
             line-height: 1.6;
@@ -48,7 +40,7 @@
         }
 
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Montserrat', sans-serif; /* Headings font */
             font-weight: 700;
             margin-bottom: 1rem;
         }
@@ -343,8 +335,8 @@
             min-width: 300px;
             display: flex;
             justify-content: center;
-                align-items: flex-start;
-    padding-top: 19px;
+            align-items: flex-start;
+            padding-top: 19px;
         }
 
         .solution-image img {
@@ -638,8 +630,9 @@
 
         /* Footer */
         footer {
-            background-color: #151515;
+            background-color: #151515; /* Slightly darker than primary-dark */
             padding: 4rem 0 2rem;
+            color: rgba(255, 255, 255, 0.8);
         }
 
         .footer-content {
@@ -650,39 +643,51 @@
             margin-bottom: 3rem;
         }
 
-        .footer-logo {
+        .footer-logo, .footer-nav, .footer-contact {
             flex: 1;
-            min-width: 250px;
+            min-width: 250px; /* Ensures they wrap on smaller screens */
+            padding: 0 1rem; /* Add some padding for spacing */
         }
-
+        
         .footer-logo img {
             height: 40px;
             margin-bottom: 1rem;
         }
 
-        .footer-nav {
-            flex: 1;
-            min-width: 250px;
+        .footer-logo p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 0.5rem;
+            margin-bottom: 0;
         }
 
-        .footer-nav h3 {
+        .footer-nav h3, .footer-contact h3 {
             font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-color);
             margin-bottom: 1.5rem;
         }
 
         .footer-links {
             list-style: none;
+            padding: 0;
         }
 
         .footer-links li {
             margin-bottom: 0.8rem;
         }
 
-        .footer-contact {
-            flex: 1;
-            min-width: 250px;
+        .footer-links li a, .contact-info p a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: var(--transition);
         }
 
+        .footer-links li a:hover, .contact-info p a:hover {
+            color: var(--highlight);
+            text-decoration: underline;
+        }
+        
         .contact-info {
             margin-bottom: 1.5rem;
         }
@@ -690,18 +695,29 @@
         .contact-info p {
             display: flex;
             align-items: center;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem; /* Consistent with li margin */
+            color: rgba(255, 255, 255, 0.8);
         }
 
         .contact-info i {
-            margin-right: 0.5rem;
+            margin-right: 0.8rem; /* Slightly more space for icons */
             color: var(--accent-start);
+            font-size: 1.1rem; /* Make icons a bit more prominent */
+        }
+
+        /* Social links in footer will use existing .social-links styles */
+        .footer-contact .social-links {
+            margin-top: 1.5rem; /* Space above social icons */
         }
 
         .copyright {
             text-align: center;
             padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .copyright p {
+            margin: 0;
+            font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.6);
         }
 
@@ -710,19 +726,15 @@
             h1 {
                 font-size: 3rem;
             }
-
             h2 {
                 font-size: 2.2rem;
             }
-
             .hero-image {
                 width: 40%;
             }
-
             .step-connector {
                 display: none;
             }
-
             .steps {
                 justify-content: center;
                 gap: 2rem;
@@ -733,62 +745,84 @@
             h1 {
                 font-size: 2.5rem;
             }
-
             h2 {
                 font-size: 2rem;
             }
-
             .section {
                 padding: 4rem 0;
             }
-
             .hero-content {
                 text-align: center;
                 margin: 0 auto;
             }
-
             .hero-image {
                 position: static;
                 width: 80%;
                 margin: 2rem auto 0;
                 transform: none;
             }
-
             .hero-buttons {
                 justify-content: center;
             }
 
             .nav-links {
-                display: none;
+                display: none; /* Hidden by default */
                 position: absolute;
-                top: 100%;
+                top: 100%; /* Position below header */
                 left: 0;
                 width: 100%;
                 padding: 1rem 0;
-                background-color: rgba(26, 26, 26, 0.95);
+                background-color: rgba(26, 26, 26, 0.95); /* Match header */
                 backdrop-filter: blur(10px);
                 flex-direction: column;
                 align-items: center;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Add shadow for depth */
             }
 
             .nav-links.active {
-                display: flex;
+                display: flex; /* Show when active */
             }
 
             .nav-links li {
-                margin: 1rem 0;
+                margin: 1rem 0; /* Vertical spacing for mobile nav items */
             }
 
             .mobile-nav-toggle {
-                display: block;
+                display: block; /* Show hamburger icon */
             }
 
             .feature-card {
                 padding: 1.5rem;
             }
-
             .step {
                 width: 100%;
+            }
+
+            /* Footer Responsive Adjustments */
+            .footer-content {
+                flex-direction: column;
+                align-items: center; /* Center columns */
+                text-align: center; /* Center text within columns */
+            }
+            .footer-logo, .footer-nav, .footer-contact {
+                min-width: 100%; /* Each column takes full width */
+                margin-bottom: 2rem; /* Space between stacked columns */
+                padding: 0; /* Reset padding if any was added for desktop */
+            }
+            .footer-logo:last-child, 
+            .footer-nav:last-child, 
+            .footer-contact:last-child {
+                margin-bottom: 0; /* Remove margin from last item */
+            }
+            .footer-logo img {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .footer-contact .social-links {
+                justify-content: center; /* Center social icons */
+            }
+            .contact-info p {
+                justify-content: center; /* Center icon + text in contact info */
             }
         }
 
@@ -796,30 +830,24 @@
             h1 {
                 font-size: 2rem;
             }
-
             h2 {
                 font-size: 1.8rem;
             }
-
             .btn {
                 padding: 0.8rem 1.5rem;
                 font-size: 0.9rem;
             }
-
             .hero-tagline {
                 font-size: 1.2rem;
             }
-
             .feature-icon {
                 width: 50px;
                 height: 50px;
                 font-size: 1.5rem;
             }
-
             .feature-card h3 {
                 font-size: 1.3rem;
             }
-
             .qr-code {
                 width: 150px;
                 height: 150px;
@@ -836,7 +864,7 @@
                     <img src="/img/logo.png" alt="Vinici Logo">
                     <h1>VINICI</h1>
                 </div>
-                <ul class="nav-links">
+                <ul class="nav-links" id="nav-links-menu">
                     <li><a href="#problem">Problem</a></li>
                     <li><a href="#solution">Solution</a></li>
                     <li><a href="#features">Features</a></li>
@@ -844,7 +872,7 @@
                     <li><a href="#demo">Demo</a></li>
                     <li><a href="#about">About</a></li>
                 </ul>
-                <button class="mobile-nav-toggle">
+                <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links-menu">
                     <i class="fas fa-bars"></i>
                 </button>
             </nav>
@@ -980,24 +1008,21 @@
                 <h2>See Vinici in Action</h2>
                 <p>Scan the QR code below to try our demo or fill out the form for more information.</p>
                 <div class="qr-code">
-                    <img src="/api/placeholder/180/180" alt="QR Code">
+                    <img src="/api/placeholder/180/180" alt="QR Code for Vinici Demo">
                 </div>
-<!--                 <a href="#" class="btn">Try Demo</a> -->
                 <div class="contact-form">
                     <form id="contact-form">
-
-                    <div class="form-group">
-                        <input type="text" class="form-input" placeholder="Your Name">
-                    </div>
-                    <div class="form-group">
-                        <input type="email" class="form-input" placeholder="Your Email">
-                    </div>
-                    <div class="form-group">
-                        <textarea class="form-input" rows="4" placeholder="Message (Optional)"></textarea>
-                    </div>
-                    <button type="submit" class="btn">Contact Us</button>
-                        </form>
-
+                        <div class="form-group">
+                            <input type="text" class="form-input" name="user_name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-input" name="user_email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-input" name="message" rows="4" placeholder="Message (Optional)"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Contact Us</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -1021,18 +1046,143 @@
                     <p>Co-founder & CEO</p>
                     <p>Political scientist with a passion for democratic transparency and citizen empowerment.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Ana's LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+                        <!-- Add other social links for Ana if available -->
                     </div>
                 </div>
             </div>
         </section>
-</body>
-<script>
-  document.getElementById('contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();
 
-    emailjs.sendForm('service_hua0j8p', 'template_sl5sxjd', this)
-      .then(() => alert('Sent!'), err => alert(JSON.stringify(err)));
-  });
-</script>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="/img/logo.png" alt="Vinici Logo">
+                    <p>Empowering citizens with transparency in political communication. Know them by what they say, hold them by what they do.</p>
+                </div>
+                <div class="footer-nav">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#problem">Problem</a></li>
+                        <li><a href="#solution">Solution</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#demo">Contact</a></li> 
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Connect With Us</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:info@vinici.com">info@vinici.com</a></p>
+                        <!-- <p><i class="fas fa-phone"></i> <a href="tel:+1234567890">+1 (234) 567-890</a></p> -->
+                    </div>
+                    <div class="social-links">
+                        <a href="#" aria-label="Vinici on LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Vinici on Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Vinici on Facebook"><i class="fab fa-facebook"></i></a>
+                        <!-- Add other relevant social media links -->
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© <span id="currentYear"></span> Vinici. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+      // EmailJS Initialization
+      emailjs.init("cle3P8QI6-LSwnNzG"); // Replace with your actual EmailJS User ID
+
+      // Contact Form Submission
+      const contactForm = document.getElementById('contact-form');
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+
+          // Replace with your actual Service ID and Template ID
+          emailjs.sendForm('service_hua0j8p', 'template_sl5sxjd', this)
+            .then(() => {
+              alert('Message Sent! We will get back to you shortly.');
+              contactForm.reset(); // Optionally reset the form
+            }, (err) => {
+              alert('Failed to send message. Please try again later or contact us directly. Error: ' + JSON.stringify(err));
+            });
+        });
+      }
+
+      // Mobile Navigation Toggle
+      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+      const navLinksMenu = document.getElementById('nav-links-menu');
+
+      if (mobileNavToggle && navLinksMenu) {
+          mobileNavToggle.addEventListener('click', () => {
+              navLinksMenu.classList.toggle('active');
+              const isExpanded = navLinksMenu.classList.contains('active');
+              mobileNavToggle.setAttribute('aria-expanded', isExpanded);
+              // Optional: Change icon from bars to times and vice-versa
+              const icon = mobileNavToggle.querySelector('i');
+              if (isExpanded) {
+                  icon.classList.remove('fa-bars');
+                  icon.classList.add('fa-times');
+              } else {
+                  icon.classList.remove('fa-times');
+                  icon.classList.add('fa-bars');
+              }
+          });
+      }
+
+      // Copyright Year
+      const currentYearSpan = document.getElementById("currentYear");
+      if (currentYearSpan) {
+        currentYearSpan.textContent = new Date().getFullYear();
+      }
+
+      // Smooth scrolling for anchor links & header offset
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+              e.preventDefault();
+              const targetId = this.getAttribute('href');
+              if (targetId.length > 1) { // Make sure it's not just "#"
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerOffset = document.querySelector('header').offsetHeight || 70; // Adjust if header height changes
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+
+                    // If mobile nav is open, close it after clicking a link
+                    if (navLinksMenu && navLinksMenu.classList.contains('active')) {
+                        navLinksMenu.classList.remove('active');
+                        mobileNavToggle.setAttribute('aria-expanded', 'false');
+                        const icon = mobileNavToggle.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                }
+              }
+          });
+      });
+
+      // Header scroll effect
+        const header = document.querySelector('header');
+        if(header) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
+                }
+            });
+        }
+
+    </script>
+</body>
 </html>
