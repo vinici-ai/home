@@ -1019,3 +1019,186 @@
         font-size: 1rem;
     }
 }
+
+/* =================================== */
+/* ========= MOBILE FIXES ============ */
+/* =================================== */
+
+/* General adjustments for better mobile experience */
+@media (max-width: 768px) {
+
+    /* 1. Fix: Content going under the fixed header */
+    /* Add padding to the top of the first main content section (hero)
+       to account for the fixed header's height.
+       The JavaScript indicates headerOffset is document.querySelector('header').offsetHeight || 70.
+       So, 70px is a good estimate for the header height. */
+    .hero {
+        padding-top: 70px; /* Adjust this value if the header's actual height on mobile is different */
+    }
+
+    /* 2. Fix: Weird width for iframe elements (e.g., YouTube videos in Demo sections) */
+    /* Make iframes responsive and maintain aspect ratio. */
+    .demo-content iframe {
+        width: 100% !important;    /* Override fixed width from HTML attribute */
+        max-width: 560px;       /* Respect original max width if container allows */
+        height: auto !important;   /* Override fixed height from HTML attribute */
+        aspect-ratio: 16 / 9;   /* Common video aspect ratio */
+        display: block;         /* Removes potential extra space below iframe */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* 3. Fix/Improvement: Stacking of content in sections like "Problem", "Solution", "Pilot" */
+    /* Ensure text and image content stacks vertically and gracefully. */
+
+    .problem-content,
+    .solution-content { /* Targets sections with this class structure */
+        flex-direction: column; /* Explicitly stack items vertically */
+    }
+
+    /* Specific for '.pilot' section where the image is first in HTML:
+       Reverse the order on mobile so text appears above the image. */
+    .pilot .solution-content {
+        flex-direction: column-reverse;
+    }
+
+    /* Adjust spacing and sizing for stacked images in these sections */
+    .problem-image,
+    .solution-image {
+        margin-top: 1.5rem; /* Add space above the image when it's stacked */
+        padding-top: 0;     /* Reset any desktop-specific top padding */
+        width: 100%;        /* Ensure image container takes full width */
+    }
+
+    .problem-image img,
+    .solution-image img {
+        max-width: 100%;    /* Ensure image itself is responsive */
+        height: auto;
+        display: block;     /* Good practice for centering and layout */
+        margin-left: auto;
+        margin-right: auto;
+        /* Optional: cap the image width on mobile for aesthetics */
+        /* max-width: 400px; */
+    }
+
+
+    /* 4. Fix/Improvement: "How It Works" section steps for clarity on mobile */
+    /* Existing CSS sets .step to width: 100% and hides connector, which is good.
+       Ensure consistent spacing and text alignment. */
+    .steps {
+        /* flex-direction: column; is effectively achieved by .step width: 100% */
+        align-items: center;  /* Center the steps container items */
+    }
+    .step {
+        /* width: 100% is already set by existing CSS @768px */
+        text-align: center; /* Center text within each step */
+        margin-bottom: 2.5rem; /* Consistent spacing between stacked steps */
+    }
+    .step-image svg { /* Ensure SVG scales or is sized appropriately */
+        width: 60px;
+        height: 60px;
+    }
+
+
+    /* 5. Fix/Improvement: "Features" section grid */
+    /* Existing CSS for .features-grid uses auto-fit, minmax(250px, 1fr),
+       which should naturally stack to a single column on smaller screens.
+       If a single column layout is explicitly desired earlier or for consistency: */
+    .features-grid {
+        grid-template-columns: 1fr; /* Force single column */
+    }
+    .feature-card {
+        align-items: center; /* Center icon and text if card is full width */
+        text-align: center;
+    }
+
+
+    /* 6. Typography and general spacing adjustments */
+    /* Existing CSS already adjusts H1 and H2 font sizes.
+       Refine paragraph text for better readability on mobile. */
+    p {
+        font-size: 0.95rem; /* Adjust as needed for optimal readability */
+        line-height: 1.7;   /* Slightly more line height can improve reading comfort */
+    }
+
+    .container {
+        width: 90%; /* Ensure consistent padding on the sides */
+    }
+
+    /* Hero section text adjustments for smaller screens */
+    .hero-content h1 {
+        font-size: 2.2rem; /* Slightly smaller than desktop, adjust as needed */
+    }
+    .hero-tagline {
+        font-size: 1.2rem;
+    }
+}
+
+
+/* Further refinements for very small screens (e.g., up to 480px wide) */
+@media (max-width: 480px) {
+    .hero {
+        padding-top: 60px; /* Header might be slightly more compact, adjust if needed */
+    }
+
+    /* Typography: Existing CSS handles H1 (2rem) / H2 (1.8rem) at 480px. */
+    .hero-content h1 {
+        font-size: 1.8rem; /* Further refinement for hero title */
+    }
+    .hero-tagline {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+    .hero-buttons .btn {
+        padding: 0.8rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    .section {
+        padding: 2.5rem 0; /* Reduce section padding */
+    }
+
+    .container {
+        width: 95%; /* Use a bit more of the screen width */
+    }
+
+    /* Contact form button full width for easier tapping */
+    .contact-form .btn {
+        width: 100%;
+        padding: 1rem; /* Make tap target larger */
+    }
+
+    /* Feature card adjustments for very small screens */
+    .feature-card h3 {
+        font-size: 1.2rem;
+    }
+    .feature-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+
+    /* How it works step text */
+    .step h3 {
+        font-size: 1.1rem;
+    }
+    .step p {
+        font-size: 0.9rem; /* Consistent with general 'p' tag styling */
+    }
+    .step-image {
+        width: 100px; /* Adjust size of the icon container */
+        height: 100px;
+    }
+    .step-image .fas { /* Adjust FontAwesome icon size within the container */
+        font-size: 2.5em;
+    }
+    .step-image svg {
+        width: 50px;
+        height: 50px;
+    }
+}
