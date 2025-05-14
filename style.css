@@ -861,3 +861,161 @@
     color: gray;
     fill: gray
 }
+
+
+
+/* About Section Specifics */
+.about {
+    position: relative; /* For the ::before pseudo-element */
+}
+
+.about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Adjusted gradient for subtlety and positioning */
+    background: radial-gradient(ellipse at top left, rgba(102, 51, 255, 0.08), transparent 60%),
+                radial-gradient(ellipse at bottom right, rgba(255, 51, 153, 0.05), transparent 70%);
+    z-index: 1; /* Behind content */
+    pointer-events: none; /* Allows clicks to pass through */
+}
+
+/* Ensure content is above the ::before */
+.about .container > * {
+    position: relative;
+    z-index: 2;
+}
+.about-title { /* If you use h2 globally, you might not need this specific class */
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-size: 2.5rem;
+    color: #fff; /* Brighter for title */
+}
+
+.about-text-fullwidth {
+    margin-bottom: 3.5rem; /* Space between text and profiles */
+    text-align: left; /* Or center if you prefer */
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.about-text-fullwidth p {
+    margin-bottom: 1rem;
+}
+
+.team-profiles {
+    display: flex;
+    flex-wrap: wrap; /* Allows profiles to wrap on smaller screens */
+    gap: 2rem; /* Space between profile cards */
+    justify-content: center; /* Center profiles if they don't fill the row */
+}
+
+.profile-card {
+    flex: 1; /* Allows cards to grow */
+    min-width: 280px; /* Minimum width before wrapping */
+    max-width: 340px; /* Maximum width of a card */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.03); /* Subtle card background */
+    padding: 2rem 1.5rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.profile-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(102, 51, 255, 0.2);
+}
+
+.profile-image {
+    width: 130px; /* Slightly smaller images for three profiles */
+    height: 130px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    background-color: #333; /* Placeholder bg */
+    border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-card h3 {
+    margin-bottom: 0.3rem;
+    font-size: 1.4rem;
+    color: #fff;
+}
+
+.profile-role {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.profile-bio {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    flex-grow: 1; /* Pushes social links to the bottom if bios have varying lengths */
+}
+
+.social-links {
+    display: flex;
+    gap: 0.8rem; /* Smaller gap for icons */
+}
+
+.social-links a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 38px;
+    height: 38px;
+    background-color: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    transition: var(--transition);
+    font-size: 1rem;
+}
+
+.social-links a:hover {
+    background: var(--gradient);
+    color: #fff;
+    transform: translateY(-3px) scale(1.1);
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 992px) {
+    .profile-card {
+        min-width: calc(50% - 1rem); /* Two cards per row, accounting for gap */
+    }
+}
+
+@media (max-width: 600px) {
+    .team-profiles {
+        flex-direction: column; /* Stack profiles vertically */
+        align-items: center; /* Center stacked cards */
+    }
+    .profile-card {
+        min-width: 80%; /* Allow cards to take more width when stacked */
+        max-width: 400px;
+    }
+    .about-title {
+        font-size: 2rem;
+    }
+    .about-text-fullwidth {
+        font-size: 1rem;
+    }
+}
