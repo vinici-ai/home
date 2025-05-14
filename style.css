@@ -838,3 +838,8 @@
                 height: 150px;
             }
         }
+
+.how-it-works path, .how-it-works .fas {
+    color: gray;
+    fill: gray
+}
