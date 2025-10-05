@@ -38,17 +38,18 @@
         </nav>
     </div>
 </header>
-
 <!-- Hero Section -->
 <section class="hero" id="home">
     <div class="container" style="position:relative; overflow: hidden;">
         <div class="hero-content">
-            <!-- Strategic Edit: Using the more powerful, mission-driven headline we developed. The existing tagline is excellent and preserved. -->
             <h1>Democratizing Political Research. Empowering Citizens.</h1>
-            <p class="hero-tagline">Go beyond the headlines. Know politicians by what they say, hold them accountable for what they do.</p>
+            <!-- Strategic Edit: Updated the tagline to be more active and benefit-oriented. -->
+            <p class="hero-tagline">Go beyond the headlines. Get data-driven clarity on what politicians <em>really</em> stand for.</p>
+            
+            <!-- Strategic Edit: This is the most critical change. We are immediately segmenting the audience and guiding them to the right part of the page, creating a clear user journey from the first click. -->
             <div class="hero-buttons">
-                 <!-- Strategic Edit: Using a more engaging CTA that leads to the compelling case study. -->
-                <a href="#case-study" class="btn">See Our Impact</a>
+                <a href="#products" class="btn">Find Your Political Alignment</a>
+                <a href="#products" class="btn btn-secondary">Explore the Research Platform</a>
             </div>
         </div>
         <div class="hero-image">
@@ -57,97 +58,47 @@
     </div>
 </section>
 
-<!-- Problem Statement -->
-<section class="section problem" id="problem">
+<!-- Award Section -->
+<!-- Strategic Edit: This award is a massive proof point. It has been moved directly after the Hero section to establish immediate credibility and authority before the user scrolls any further. -->
+<section class="section award" id="award" style="background-color: #f7fafc; text-align: center;">
     <div class="container">
-        <div class="problem-content">
-            <div class="problem-text">
-                <h2>The Problem: A Crisis of Clarity</h2>
-                <!-- Strategic Edit: Rewriting the problem statement to be more evocative and align with our core messaging about information overload. -->
-                <p>Politicians often say one thing and do another. But in today’s flood of 24/7 news, social media, and complex speeches, seeing the mismatch is nearly impossible.</p>
-                <p>The truth gets buried in an overwhelming volume of data, leaving manipulation in the gray space between words and actions. Accountability is lost.</p>
-                <p>This isn't just a political issue; it's a barrier to progress and trust, felt in democracies and transitional governments worldwide.</p>
+        <div class="award-content">
+            <h2 style="color: #4a5568; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 2rem;">Recognized on the Global Stage</h2>
+            <p style="margin-bottom: 2rem; font-size: 1.5rem; color: #1a202c; font-weight: 600;">Winner of the Tech Competition at the Copenhagen Democracy Summit 2024</p>
+            <div class="video-container" style="max-width: 800px; margin: auto; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); border-radius: 8px; overflow: hidden;">
+                 <iframe width="560" height="315" 
+                    src="https://www.youtube.com/embed/1vAELegcdJo?rel=0&modestbranding=1&showinfo=0&controls=1"
+                    title="YouTube video player" frameborder="0" 
+                    allow="autoplay; encrypted-media" allowfullscreen style="width: 100%; height: 450px;">
+                </iframe>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Solution -->
-<!-- Strategic Edit: This section is now the primary, high-level solution statement. It explains the "what" and "how" conceptually. The Pilot case study will follow as concrete proof. -->
-<section class="section solution" id="solution">
+<!-- Products Section (Formerly Features) -->
+<!-- Strategic Edit: Replaced the generic "Features" with a clear "Products" section. This directly addresses the two user types from the Hero buttons and explains your core offerings upfront. The old "Problem" and "Solution" sections are now unnecessary as this section handles their purpose more effectively. -->
+<section class="section features" id="products">
     <div class="container">
-        <div class="solution-content">
-            <div class="solution-image">
-                <img src="img/app.png" alt="Vinici Platform Visualization">
-            </div>
-            <div class="solution-text">
-                <h2>Our Solution: Expertise-Led, AI-Powered</h2>
-                <p><strong>Vinici changes this.</strong></p>
-                <p>By uniting the deep knowledge of political experts with the scale of artificial intelligence, our platform gives you a clear view of the political landscape.</p>
-                <p>We empower citizens, journalists, and researchers to track promises, uncover genuine alignment, and separate rhetoric from reality.</p>
-                <ul>
-                    <li>✓ Detect manipulative rhetoric</li>
-                    <li>✓ Track promises vs. reality</li>
-                    <li>✓ Flag contradictions in real-time</li>
-                    <li>✓ Translate complex data into clear insights</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Case Study -->
-<!-- Strategic Edit: The Georgia pilot is your most powerful asset. It's now framed as a "Case Study" to prove the solution works. New ID is #case-study. -->
-<section class="section pilot" id="case-study">
-    <div class="container">
-        <div class="solution-content">
-            <div class="solution-text">
-                <h2>Proof in Practice: The Georgia 2024 Pilot</h2>
-                <p>We piloted Vinici in Georgia, where leaders claimed pro-EU values while passing anti-democratic laws. Our system provided citizens with real-time clarity on this contradiction.</p>
-                <p>The AI flagged manipulative language, tracked broken promises, and highlighted rhetorical shifts as they happened.</p>
-                <p><strong>The outcome? In just 10 days, we drove over 20,000 website visits and 2,000+ chatbot engagements, helping citizens make informed choices.</strong></p>
-                <p><a href="https://vinici.ge" target="_blank" class="text-link">Explore the V1.0 Pilot →</a></p>
-            </div>
-            <div class="solution-image">
-                <img src="img/vinicige_coph.png" alt="Vinici Georgia Pilot Screenshot">
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Features -->
-<section class="section features" id="features">
-    <div class="container">
-        <h2>A New Toolkit for Political Accountability</h2>
-        <div class="features-grid">
-            <!-- Strategic Edit: Rewriting feature titles and descriptions to be more benefit-focused and powerful. -->
-            <div class="feature-card">
+        <h2>A New Toolkit for Every Mission</h2>
+        <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); align-items: stretch;">
+            <!-- Card 1: The Compass for Citizens -->
+            <div class="feature-card" style="display: flex; flex-direction: column;">
                 <div class="feature-icon">
-                    <i class="fas fa-microphone-alt"></i>
+                    <i class="fas fa-compass"></i>
                 </div>
-                <h3>Decode Political Rhetoric</h3>
-                <p>Automatically detect manipulative tactics like deflection, fear appeals, whataboutism, and false dilemmas.</p>
+                <h3>For Citizens: The Vinici Compass</h3>
+                <p style="flex-grow: 1;">Forget rigid quizzes. Ask specific questions about issues <em>you</em> care about, and our AI will analyze public records to show you which politicians truly match your views. It's a personal, conversational guide to the election.</p>
+                <a href="#" class="btn" style="margin-top: auto;">Explore the Compass (Free)</a>
             </div>
-            <div class="feature-card">
+            <!-- Card 2: The Platform for Professionals -->
+            <div class="feature-card" style="display: flex; flex-direction: column;">
                 <div class="feature-icon">
-                    <i class="fas fa-tasks"></i>
+                    <i class="fas fa-layer-group"></i>
                 </div>
-                <h3>Track Promises vs. Reality</h3>
-                <p>Move beyond words. Our system monitors official actions and data to verify if political promises are being kept.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-exclamation-triangle"></i>
-                </div>
-                <h3>Uncover Contradictions</h3>
-                <p>Identify flip-flops and shifts in ideology over time, backed by a timeline of sourced statements and actions.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-users"></i>
-                </div>
-                <h3>Get Data-Driven Clarity</h3>
-                <p>Our intuitive dashboards and summaries translate complex analysis into clear, actionable insights—no expertise required.</p>
+                <h3>For Professionals: The Vinici Platform</h3>
+                <p style="flex-grow: 1;">For journalists, academics, and NGOs. Move beyond keyword tracking to conduct sophisticated analysis of political narratives, rhetoric, and disinformation at scale. Monitor, analyze, and report with confidence.</p>
+                <a href="#contact" class="btn" style="margin-top: auto;">Request a Demo</a>
             </div>
         </div>
     </div>
@@ -157,24 +108,21 @@
 <section class="section how-it-works" id="how-it-works">
     <div class="container">
         <h2>Our Hybrid Intelligence Methodology</h2>
-        <!-- Strategic Edit: This section is upgraded to reflect the more sophisticated "Expert-Led, AI-Powered" process. This builds significantly more trust and credibility than a simple 3-step process. -->
+        <p class="section-subtitle" style="text-align: center; max-width: 700px; margin: -1rem auto 3rem auto;">We combine the nuanced knowledge of human experts with the scale of specialized AI. This is how.</p>
         <div class="steps">
             <div class="step-connector"></div>
             <div class="step">
                 <div class="step-number">1</div>
                 <div class="step-image">
-                     <i class="fas fa-sitemap fa-3x"></i> <!-- Icon for framework/graph -->
+                     <i class="fas fa-sitemap fa-3x"></i>
                 </div>
                 <h3>The Expert Framework</h3>
-                <p>Our political scientists build the analytical framework (the ViniciGraph), defining what to look for—from policy topics to specific propaganda techniques.</p>
+                <p>Our political scientists build the analytical framework (the ViniciGraph), defining what to look for—from policy topics to specific propaganda techniques like <em>'Whataboutism'</em> and <em>'Fear Appeals'</em>.</p>
             </div>
             <div class="step">
                 <div class="step-number">2</div>
                 <div class="step-image">
-                    <svg width="80" height="80" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="black">
-                        <path d="M50 10 Q55 35 85 50 Q55 65 50 90 Q45 65 15 50 Q45 35 50 10Z"></path>
-                        <path d="M75 20 Q77 28 85 30 Q77 32 75 40 Q73 32 65 30 Q73 28 75 20Z"></path>
-                    </svg>
+                     <i class="fas fa-robot fa-3x"></i>
                 </div>
                 <h3>AI at Scale</h3>
                 <p>Our specialized AI agents apply this framework to millions of data points, classifying statements and tracking narratives with superhuman speed.</p>
@@ -182,7 +130,7 @@
             <div class="step">
                 <div class="step-number">3</div>
                 <div class="step-image">
-                    <i class="fas fa-user-check fa-3x"></i> <!-- Icon for human validation -->
+                    <i class="fas fa-user-check fa-3x"></i>
                 </div>
                 <h3>Human-in-the-Loop Validation</h3>
                 <p>Our experts continuously audit, correct, and refine the AI's work, ensuring our analysis is nuanced, accurate, and accountable.</p>
@@ -191,36 +139,36 @@
     </div>
 </section>
 
-<!-- Award Section -->
-<!-- Strategic Edit: This award is a massive proof point. It deserves its own dedicated, visually striking section to build credibility. -->
-<section class="section award" id="award" style="background-color: #1a202c; color: white; text-align: center;">
+<!-- Case Study -->
+<section class="section pilot" id="case-study">
     <div class="container">
-        <div class="award-content">
-            <h2>Recognized on the Global Stage</h2>
-            <p style="margin-bottom: 2rem; font-size: 1.2rem;">Vinici was honored to win the tech competition at the Copenhagen Democracy Summit 2024.</p>
-            <div class="video-container" style="max-width: 800px; margin: auto;">
-                 <iframe width="560" height="315" 
-                    src="https://www.youtube.com/embed/1vAELegcdJo?rel=0&modestbranding=1&showinfo=0&controls=1"
-                    title="YouTube video player" frameborder="0" 
-                    allow="autoplay; encrypted-media" allowfullscreen>
-                </iframe>
+        <div class="solution-content">
+            <div class="solution-text">
+                <!-- Strategic Edit: Renamed H2 to better connect it as proof of the methodology above. -->
+                <h2>Our Methodology in Action: The Georgia 2024 Pilot</h2>
+                <p>We piloted Vinici in Georgia, where leaders claimed pro-EU values while passing anti-democratic laws. Our system provided citizens with real-time clarity on this contradiction.</p>
+                <p>The AI flagged manipulative language, tracked broken promises, and highlighted the direct contradiction between words and actions.</p>
+                <p><strong>The outcome? In just 10 days, we drove over 20,000 website visits and 2,000+ chatbot engagements, empowering citizens to see beyond the rhetoric.</strong></p>
+                <p><a href="https://vinici.ge" target="_blank" class="text-link">Explore the V1.0 Pilot →</a></p>
+            </div>
+            <div class="solution-image">
+                <img src="img/vinicige_coph.png" alt="Vinici Georgia Pilot Screenshot">
             </div>
         </div>
     </div>
 </section>
 
+
 <!-- About -->
 <section class="section about" id="about">
     <div class="container">
-        <h2 class="about-title">About Vinici</h2>
-        <!-- Strategic Edit: Rewriting the mission statement to be more concise and powerful, reflecting the "fusion" of expertise. -->
+        <h2 class="about-title">The Team Closing the Gap</h2>
         <div class="about-text-fullwidth">
             <p>Vinici was born from a realization: the tools used to analyze commercial trends were far more advanced than those available for civic analysis. We exist to close that gap.</p>
-            <p>We are a hybrid team of political scientists, peacebuilding professionals, and veteran AI engineers united by a single mission: to make political discourse transparent and accountable. We are independent, mission-driven, and committed to building permanent infrastructure for a more informed democracy.</p>
+            <p>We are a hybrid team of **political scientists, peacebuilding professionals, and veteran AI engineers** united by a single mission: to build permanent infrastructure for a more informed democracy.</p>
         </div>
         <div class="team-profiles">
-            <!-- Strategic Edit: Slightly expanding bios to add more authority. -->
-            <div class="profile-card">
+             <div class="profile-card">
                 <div class="profile-image">
                     <img src="/img/ann.jpeg" alt="Ana - Co-founder & CEO">
                 </div>
@@ -228,7 +176,7 @@
                 <p class="profile-role">Co-founder & CEO</p>
                 <p class="profile-bio">Expert in Strategic Communications, Peacebuilding, and Operations.</p>
                 <div class="social-links">
-                    <a href="https://www.linkedin.com/in/ana-toklikishvili-395b407/" aria-label="Ana's LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.linkedin.com/in/ana-toklikishvili-395b407/" aria-label="Ana's LinkedIn Profile" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
             <div class="profile-card">
@@ -239,7 +187,7 @@
                 <p class="profile-role">Co-founder & CTO</p>
                 <p class="profile-bio">Veteran Product Leader specializing in Tech Development and Go-to-Market Strategy.</p>
                 <div class="social-links">
-                    <a href="https://www.linkedin.com/in/giorgitoklikishvili" aria-label="Giorgi's LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.linkedin.com/in/giorgitoklikishvili" aria-label="Giorgi's LinkedIn Profile" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
             <div class="profile-card">
@@ -250,7 +198,7 @@
                 <p class="profile-role">AI Advisor</p>
                 <p class="profile-bio">Leading AI Researcher focused on Natural Language Processing and System Design.</p>
                 <div class="social-links">
-                    <a href="https://www.linkedin.com/in/davitj/" aria-label="Davit's LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.linkedin.com/in/davitj/" aria-label="Davit's LinkedIn Profile" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
         </div>
@@ -258,12 +206,11 @@
 </section>
 
 <!-- Contact/CTA Section -->
-<!-- Strategic Edit: Merged the Demo and Contact form into a single, clear action-oriented section. New ID is #contact. -->
 <section class="section demo" id="contact">
     <div class="container">
         <div class="demo-content">
-            <h2>Get In Touch</h2>
-            <p>Interested in our research platform? Have a question for our team? We’d love to hear from you.</p>
+            <h2>Ready to Go Deeper?</h2>
+            <p>Interested in a demo of the Vinici Platform for your organization? Have a question for our research team? We’d love to hear from you.</p>
             <div class="contact-form">
                 <form id="contact-form">
                     <div class="form-group">
@@ -292,10 +239,11 @@
             </div>
             <div class="footer-nav">
                 <h3>Quick Links</h3>
+                <!-- Strategic Edit: Updated footer links to match the new, streamlined page structure. -->
                 <ul class="footer-links">
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#problem">Problem</a></li>
-                    <li><a href="#solution">Solution</a></li>
+                    <li><a href="#products">Our Tools</a></li>
+                    <li><a href="#how-it-works">Methodology</a></li>
                     <li><a href="#case-study">Case Study</a></li>
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#contact">Contact</a></li>
