@@ -1,273 +1,508 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Vinici - Democracy tech solution that analyzes political rhetoric to identify manipulative language and hold politicians accountable.">
     <title>Vinici | Profiling Politicians</title>
+    <description>Vinici - Democracy tech solution that analyzes political rhetoric to identify manipulative language and hold politicians accountable.</description>
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for animations and specific elements */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .bg-hero {
+            /* background-color: #000; */
+            /* background-image: url('https://images.unsplash.com/photo-1593374872986-8a423811a126?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); Placeholder image */
+            background-size: cover;
+            background-position: center;
+        }
+        .bg-cta {
+            background-color: #1a1a1a;
+        }
+    
 
-    <link rel="stylesheet" href="style.css">
+        /* Base styles for each slide */
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            /* Smooth transition for the fade effect */
+            transition: opacity 1s ease-in-out;
+            will-change: opacity;
+        }
+
+        /* The active slide will be visible */
+        .slide.active {
+            opacity: 1;
+        }
+
+        /* Animation for text content on slide change */
+        .active .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .eb-garamond-200 {
+            /* font-family: "EB Garamond", serif;
+            font-optical-sizing: auto;
+            font-weight: 200;
+            font-style: normal; */
+        }
+        * {
+            /* font-family: 'Courier New', Courier, monospace; */
+            font-family: "Noto Sans", sans-serif;
+        }
+        .logo img{
+            display: inline;
+            height: 40px;
+        }
+    </style>
 </head>
-<body>
-    <header>
-    <div class="container">
-        <nav>
-            <div class="logo">
-                <img src="/img/logo.png" alt="Vinici Logo">
-                <h1>VINICI</h1>
-            </div>
-            <!-- Strategic Edit: Refined nav links for a clearer user journey. "Pilot" is now "Case Study" for better clarity. "Demo" is now "Contact" to be more direct. -->
-            <ul class="nav-links" id="nav-links-menu">
-                <li><a href="#problem">The Problem</a></li>
-                <li><a href="#solution">Our Solution</a></li>
-                <li><a href="#case-study">Case Study</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links-menu">
-                <i class="fas fa-bars"></i>
+<body class="bg-white text-gray-800 font-sans">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-md fixed top-0 left-0 right-0 z-50 border-b border-gray-200">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold logo">
+                <img src="https://vinici.ai/img/logo.png" alt="Vinici Logo">    
+                <span class="hidden md:inline">Vinici</span> 
+            </a>
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="#features" class="hover:text-gray-600 transition-colors">Solution</a>
+                <a href="#pricing" class="hover:text-gray-600 transition-colors">How it works</a>
+                <a href="#testimonials" class="hover:text-gray-600 transition-colors">About Us</a>
+                <a href="#cta" class="bg-black text-white px-4 py-2 hover:bg-gray-800 transition-colors">Book a demo</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
-        </nav>
-    </div>
-</header>
-<!-- Hero Section -->
-<section class="hero" id="home">
-    <div class="container" style="position:relative; overflow: hidden;">
-        <div class="hero-content">
-            <h1>Democratizing Political Research. Empowering Citizens.</h1>
-            <!-- Strategic Edit: Updated the tagline to be more active and benefit-oriented. -->
-            <p class="hero-tagline">Go beyond the headlines. Get data-driven clarity on what politicians <em>really</em> stand for.</p>
-            
-            <!-- Strategic Edit: This is the most critical change. We are immediately segmenting the audience and guiding them to the right part of the page, creating a clear user journey from the first click. -->
-            <div class="hero-buttons">
-                <a href="#products" class="btn">Find Your Political Alignment</a>
-                <a href="#products" class="btn btn-secondary">Explore the Research Platform</a>
-            </div>
         </div>
-        <div class="hero-image">
-            <!-- <img src="/img/cover.png" alt="Vinici Demo Image"> -->
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#features" class="block py-2 hover:text-gray-600">Solution</a>
+            <a href="#pricing" class="block py-2 hover:text-gray-600">How it works</a>
+            <a href="#testimonials" class="block py-2 hover:text-gray-600">About Us</a>
+            <a href="#cta" class="block mt-2 bg-black text-white px-4 py-2 text-center">Book a demo</a>
         </div>
-    </div>
-</section>
+    </header>
 
-<!-- Award Section -->
-<!-- Strategic Edit: This award is a massive proof point. It has been moved directly after the Hero section to establish immediate credibility and authority before the user scrolls any further. -->
-<section class="section award" id="award" style="text-align: center;">
-    <div class="container">
-        <div class="award-content">
-            <h2 style="color: #4a5568; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 2rem;">Recognized on the Global Stage</h2>
-            <p style="margin-bottom: 2rem; font-size: 1.5rem; color: #1a202c; font-weight: 600;">Winner of the Tech Competition at the Copenhagen Democracy Summit 2024</p>
-            <div class="video-container" style="max-width: 800px; margin: auto; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); border-radius: 8px; overflow: hidden;">
-                 <iframe width="560" height="315" 
-                    src="https://www.youtube.com/embed/1vAELegcdJo?rel=0&modestbranding=1&showinfo=0&controls=1"
-                    title="YouTube video player" frameborder="0" 
-                    allow="autoplay; encrypted-media" allowfullscreen style="width: 100%; height: 450px;">
-                </iframe>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Products Section (Formerly Features) -->
-<!-- Strategic Edit: Replaced the generic "Features" with a clear "Products" section. This directly addresses the two user types from the Hero buttons and explains your core offerings upfront. The old "Problem" and "Solution" sections are now unnecessary as this section handles their purpose more effectively. -->
-<section class="section features" id="products">
-    <div class="container">
-        <h2>A New Toolkit for Every Mission</h2>
-        <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); align-items: stretch;">
-            <!-- Card 1: The Compass for Citizens -->
-            <div class="feature-card" style="display: flex; flex-direction: column;">
-                <div class="feature-icon">
-                    <i class="fas fa-compass"></i>
-                </div>
-                <h3>For Citizens: The Vinici Compass</h3>
-                <p style="flex-grow: 1;">Forget rigid quizzes. Ask specific questions about issues <em>you</em> care about, and our AI will analyze public records to show you which politicians truly match your views. It's a personal, conversational guide to the election.</p>
-                <a href="#" class="btn" style="margin-top: auto;">Explore the Compass (Free)</a>
-            </div>
-            <!-- Card 2: The Platform for Professionals -->
-            <div class="feature-card" style="display: flex; flex-direction: column;">
-                <div class="feature-icon">
-                    <i class="fas fa-layer-group"></i>
-                </div>
-                <h3>For Professionals: The Vinici Platform</h3>
-                <p style="flex-grow: 1;">For journalists, academics, and NGOs. Move beyond keyword tracking to conduct sophisticated analysis of political narratives, rhetoric, and disinformation at scale. Monitor, analyze, and report with confidence.</p>
-                <a href="#contact" class="btn" style="margin-top: auto;">Request a Demo</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- How It Works -->
-<section class="section how-it-works" id="how-it-works">
-    <div class="container">
-        <h2>Our Hybrid Intelligence Methodology</h2>
-        <p class="section-subtitle" style="text-align: center; max-width: 700px; margin: -1rem auto 3rem auto;">We combine the nuanced knowledge of human experts with the scale of specialized AI. This is how.</p>
-        <div class="steps">
-            <div class="step-connector"></div>
-            <div class="step">
-                <div class="step-number">1</div>
-                <div class="step-image">
-                     <i class="fas fa-sitemap fa-3x"></i>
-                </div>
-                <h3>The Expert Framework</h3>
-                <p>Our political scientists build the analytical framework (the ViniciGraph), defining what to look for—from policy topics to specific propaganda techniques like <em>'Whataboutism'</em> and <em>'Fear Appeals'</em>.</p>
-            </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <div class="step-image">
-                     <i class="fas fa-robot fa-3x"></i>
-                </div>
-                <h3>AI at Scale</h3>
-                <p>Our specialized AI agents apply this framework to millions of data points, classifying statements and tracking narratives with superhuman speed.</p>
-            </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <div class="step-image">
-                    <i class="fas fa-user-check fa-3x"></i>
-                </div>
-                <h3>Human-in-the-Loop Validation</h3>
-                <p>Our experts continuously audit, correct, and refine the AI's work, ensuring our analysis is nuanced, accurate, and accountable.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Case Study -->
-<section class="section pilot" id="case-study">
-    <div class="container">
-        <div class="solution-content">
-            <div class="solution-text">
-                <!-- Strategic Edit: Renamed H2 to better connect it as proof of the methodology above. -->
-                <h2>Our Methodology in Action: The Georgia 2024 Pilot</h2>
-                <p>We piloted Vinici in Georgia, where leaders claimed pro-EU values while passing anti-democratic laws. Our system provided citizens with real-time clarity on this contradiction.</p>
-                <p>The AI flagged manipulative language, tracked broken promises, and highlighted the direct contradiction between words and actions.</p>
-                <p><strong>The outcome? In just 10 days, we drove over 20,000 website visits and 2,000+ chatbot engagements, empowering citizens to see beyond the rhetoric.</strong></p>
-                <p><a href="https://vinici.ge" target="_blank" class="text-link">Explore the V1.0 Pilot →</a></p>
-            </div>
-            <div class="solution-image">
-                <img src="img/vinicige_coph.png" alt="Vinici Georgia Pilot Screenshot">
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<!-- About -->
-<section class="section about" id="about">
-    <div class="container">
-        <h2 class="about-title">The Team Closing the Gap</h2>
-        <div class="about-text-fullwidth">
-            <p>Vinici was born from a realization: the tools used to analyze commercial trends were far more advanced than those available for civic analysis. We exist to close that gap.</p>
-            <p>We are a hybrid team of **political scientists, peacebuilding professionals, and veteran AI engineers** united by a single mission: to build permanent infrastructure for a more informed democracy.</p>
-        </div>
-        <div class="team-profiles">
-             <div class="profile-card">
-                <div class="profile-image">
-                    <img src="/img/ann.jpeg" alt="Ana - Co-founder & CEO">
-                </div>
-                <h3>Ana</h3>
-                <p class="profile-role">Co-founder & CEO</p>
-                <p class="profile-bio">Expert in Strategic Communications, Peacebuilding, and Operations.</p>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/ana-toklikishvili-395b407/" aria-label="Ana's LinkedIn Profile" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-            <div class="profile-card">
-                <div class="profile-image">
-                    <img src="/img/gio.jpeg" alt="Giorgi - Co-founder & CTO">
-                </div>
-                <h3>Giorgi</h3>
-                <p class="profile-role">Co-founder & CTO</p>
-                <p class="profile-bio">Veteran Product Leader specializing in Tech Development and Go-to-Market Strategy.</p>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/giorgitoklikishvili" aria-label="Giorgi's LinkedIn Profile" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-            <div class="profile-card">
-                <div class="profile-image">
-                    <img src="/img/jnz.jpeg" alt="Davit - AI Advisor">
-                </div>
-                <h3>Davit</h3>
-                <p class="profile-role">AI Advisor</p>
-                <p class="profile-bio">Leading AI Researcher focused on Natural Language Processing and System Design.</p>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/davitj/" aria-label="Davit's LinkedIn Profile" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Contact/CTA Section -->
-<section class="section demo" id="contact">
-    <div class="container">
-        <div class="demo-content">
-            <h2>Ready to Go Deeper?</h2>
-            <p>Interested in a demo of the Vinici Platform for your organization? Have a question for our research team? We’d love to hear from you.</p>
-            <div class="contact-form">
-                <form id="contact-form">
-                    <div class="form-group">
-                        <input type="text" class="form-input" name="user_name" placeholder="Your Name" required>
+    <main>
+        <!-- Hero Section -->
+        <section class="bg-hero min-h-screen flex items-center eb-garamond-200 relative overflow-hidden">
+            <div class="slider-container w-full h-full">
+                <!-- Slide 1 -->
+                <div class="slide absolute w-full h-full opacity-0 transition-opacity duration-1000 ease-in-out">
+                    <div class="container mx-auto px-6 text-center flex flex-col justify-center h-full">
+                        <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">They Speak in Rhetoric<br/> We Reveal the Truth</h1>
+                        <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8">Politicians often say one thing and do another, but holding them accountable has been impossible. Until now.</p>
+                        <div class="flex justify-center">
+                            <a href="#cta" class="bg-white text-black px-6 py-3 font-semibold hover:bg-gray-200 transition-colors">Find Your Clarity</a>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input type="email" class="form-input" name="user_email" placeholder="Your Email" required>
+                </div>
+                <!-- Slide 2 -->
+                <div class="slide absolute w-full h-full opacity-0 transition-opacity duration-1000 ease-in-out">
+                    <div class="container mx-auto px-6 text-center flex flex-col justify-center h-full">
+                        <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">Democratizing Political Research</h1>
+                        <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8">The world of politics is vast, complex, and intentionally confusing. How can you be sure who truly represents your values?</p>
+                        <div class="flex justify-center">
+                            <a href="#features" class="border-2 border-white px-6 py-3 font-semibold hover:bg-white hover:text-black transition-colors">Explore the Compass</a>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <textarea class="form-input" name="message" rows="4" placeholder="Message"></textarea>
+                </div>
+                <!-- Slide 3 -->
+                <div class="slide absolute w-full h-full opacity-0 transition-opacity duration-1000 ease-in-out">
+                    <div class="container mx-auto px-6 text-center flex flex-col justify-center h-full">
+                        <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">Clarity for a Complex World</h1>
+                        <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8">From local elections to global summits, a gap exists between what politicians say and what they do. This isn't just a political issue; it's a barrier to progress and trust.</p>
+                        <div class="flex justify-center">
+                            <a href="#cta" class="bg-white text-black px-6 py-3 font-semibold hover:bg-gray-200 transition-colors">Join the Mission</a>
+                        </div>
                     </div>
-                    <button type="submit" class="btn">Send Message</button>
+                </div>
+            </div>
+        </section>
+
+         <!-- Problem Section -->
+        <section id="features" class="py-20 bg-gray-50 eb-garamond-200">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-3">The Problem</h2>
+                    <p class="text-gray-600 max-w-3xl mx-auto">The overwhelming volume of political discourse is often complex and intentionally distorted, making it difficult for citizens, journalists, and researchers to hold leaders accountable. Existing tools are either too expensive and complex or too superficial to offer meaningful insight, leaving valuable truths buried in data.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="fade-in-up">
+                        <img src="https://vinici.ai/img/app.png" alt="Feature illustration" class="rounded-lg shadow-lg">
+                    </div>
+                    <div class="fade-in-up" style="transition-delay: 0.2s;">
+                        <h3 class="text-2xl font-bold mb-4">From Noise to Nuance</h3>
+                        <p class="text-gray-600 mb-6">Traditional analysis fails to capture the full picture, leaving you to sift through rhetoric and propaganda. We provide the tools to move beyond keywords and uncover the real narratives shaping our world.</p>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <span class="bg-gray-200 text-white h-5 w-5 text-center mr-4 mt-1 flex-shrink-0"></span>
+                                <span>Analyze millions of data points to see what's really being said.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="bg-gray-200 text-white h-5 w-5 text-center mr-4 mt-1 flex-shrink-0"></span>
+                                <span>Pre-empt risks by understanding narrative shifts and manipulation.</span>
+                            </li>
+                             <li class="flex items-start">
+                                <span class="bg-gray-200 text-white h-5 w-5 text-center mr-4 mt-1 flex-shrink-0"></span>
+                                <span>Control uncertainty with AI-powered predictions and insights.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solutions Section -->
+        <section id="solutions" class="py-20 bg-white eb-garamond-200">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-3">Our Solutions</h2>
+                    <p class="text-gray-600 max-w-3xl mx-auto">We offer a suite of tools designed to bring clarity to politics for everyone, from curious citizens to enterprise-level organizations.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-10">
+                    <!-- Vinici Compass -->
+                    <div class="bg-gray-50 p-8 rounded-lg shadow-md fade-in-up">
+                        <h3 class="text-2xl font-bold mb-3">Vinici Compass</h3>
+                        <p class="text-gray-500 mb-4 font-semibold">For Citizens</p>
+                        <p class="text-gray-700 mb-6">Understand which parties and politicians truly align with your worldview. Move beyond generic quizzes and ask the specific questions that matter to you to find your place in the political landscape.</p>
+                        <a href="#" class="bg-black text-white px-6 py-3 font-semibold hover:bg-gray-800 transition-colors">Explore the Compass</a>
+                    </div>
+
+                    <!-- Vinici Tool -->
+                    <div class="bg-gray-50 p-8 rounded-lg shadow-md fade-in-up" style="transition-delay: 0.2s;">
+                        <h3 class="text-2xl font-bold mb-3">Vinici Tool</h3>
+                        <p class="text-gray-500 mb-4 font-semibold">For Citizens, Researchers & Organizations</p>
+                        <p class="text-gray-700 mb-6">A powerful platform to deep-dive into the narratives, trends, and rhetoric shaping politics. Uncover data-driven insights with tiers designed for every level of research.</p>
+                         <a href="#" class="bg-transparent text-black border-2 border-black px-6 py-3 font-semibold hover:bg-black hover:text-white transition-colors">Discover the Tool</a>
+                    </div>
+                </div>
+
+                <!-- Vinici Tool Tiers -->
+                <div class="mt-16">
+                    <h3 class="text-2xl md:text-3xl font-bold text-center mb-10">Vinici Tool Tiers</h3>
+                    <div class="grid md:grid-cols-3 gap-8 text-center">
+                        <!-- Free Tier -->
+                        <div class="border p-8 rounded-lg fade-in-up">
+                            <h4 class="text-xl font-bold mb-2">Free</h4>
+                            <p class="text-gray-600 mb-4">Get started with essential features.</p>
+                            <ul class="text-left space-y-2 text-gray-700">
+                                <li>&#10003; Access public dashboards & reports</li>
+                                <li>&#10003; 5 Research Points per week</li>
+                                <li>&#10003; Pay-as-you-go for more</li>
+                            </ul>
+                        </div>
+                        <!-- Pro Tier -->
+                        <div class="border p-8 rounded-lg border-black shadow-xl fade-in-up" style="transition-delay: 0.2s;">
+                             <h4 class="text-xl font-bold mb-2">Pro</h4>
+                             <p class="text-gray-600 mb-4">For dedicated researchers and analysts.</p>
+                             <ul class="text-left space-y-2 text-gray-700">
+                                 <li>&#10003; Create custom dashboards & reports</li>
+                                 <li>&#10003; Unlimited usage within Fair Use Policy</li>
+                             </ul>
+                        </div>
+                        <!-- Enterprise Tier -->
+                        <div class="border p-8 rounded-lg fade-in-up" style="transition-delay: 0.4s;">
+                             <h4 class="text-xl font-bold mb-2">Enterprise</h4>
+                             <p class="text-gray-600 mb-4">Bespoke solutions for organizations.</p>
+                            <ul class="text-left space-y-2 text-gray-700">
+                                 <li>&#10003; Use your own custom datasets</li>
+                                 <li>&#10003; Custom annotation methodologies</li>
+                                 <li>&#10003; On-premise deployment option</li>
+                                 <li>&#10003; Unlimited usage & priority support</li>
+                             </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <section id="about" class="py-20 bg-white eb-garamond-200">
+            <div class="container mx-auto px-6">
+        
+                <!-- Team -->
+                <div class="max-w-6xl mx-auto mb-20 fade-in-up" style="transition-delay: 0.2s;">
+                    <h3 class="text-2xl md:text-3xl font-bold mb-6 text-center">Our Team: Experts and Engineers, United by a Mission</h3>
+                    <div class="space-y-4 text-gray-700 text-lg leading-relaxed mb-12 max-w-4xl mx-auto">
+                        <p class="text-center">You cannot build a tool to analyze politics without a deep understanding of politics itself.</p>
+                        
+                        <p class="text-center">Vinici is not a typical tech startup. We are a hybrid team founded on the principle that technology must serve expertise. Our DNA is a fusion of:</p>
+                        
+                        <ul class="space-y-4 ml-6">
+                            <li class="flex items-start">
+                                <span class="bg-black text-white h-6 w-6 rounded-full text-center mr-4 mt-1 flex-shrink-0 text-sm leading-6">•</span>
+                                <span><strong>Political Scientists & Peacebuilding Professionals</strong> who have spent decades studying the nuances of rhetoric, policy, and conflict. They design the analytical frameworks that form the bedrock of our system.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="bg-black text-white h-6 w-6 rounded-full text-center mr-4 mt-1 flex-shrink-0 text-sm leading-6">•</span>
+                                <span><strong>Data Scientists & AI Researchers</strong> who are veterans of the social listening and natural language processing industries. They build the powerful, scalable engines that bring our experts' frameworks to life.</span>
+                            </li>
+                        </ul>
+                        
+                        <p class="text-center">We are the bridge between the research lab and the real world. Our collective experience in both analyzing propaganda and building the technology to track it gives us a unique perspective to solve this problem.</p>
+                    </div>
+                    
+                    <!-- Team Profiles -->
+                    <div class="grid md:grid-cols-3 gap-8 mt-12">
+                        <div class="bg-gray-50 p-8 rounded-lg shadow-md text-center fade-in-up">
+                            <div class="mb-6">
+                                <img src="/img/ann.jpeg" alt="Ana - Co-founder & CEO" class="w-32 h-32 rounded-full mx-auto object-cover shadow-lg">
+                            </div>
+                            <h4 class="text-xl font-bold mb-2">Ana</h4>
+                            <p class="text-gray-500 mb-3 font-semibold">Co-founder & CEO</p>
+                            <p class="text-gray-700 mb-4">Expert in Strategic Communications, Peacebuilding, and Operations.</p>
+                            <div class="flex justify-center">
+                                <a href="https://www.linkedin.com/in/ana-toklikishvili-395b407/" aria-label="Ana's LinkedIn Profile" target="_blank" class="bg-black text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-8 rounded-lg shadow-md text-center fade-in-up" style="transition-delay: 0.2s;">
+                            <div class="mb-6">
+                                <img src="/img/gio.jpeg" alt="Giorgi - Co-founder & CTO" class="w-32 h-32 rounded-full mx-auto object-cover shadow-lg">
+                            </div>
+                            <h4 class="text-xl font-bold mb-2">Giorgi</h4>
+                            <p class="text-gray-500 mb-3 font-semibold">Co-founder & CTO</p>
+                            <p class="text-gray-700 mb-4">Veteran Product Leader specializing in Tech Development and Go-to-Market Strategy.</p>
+                            <div class="flex justify-center">
+                                <a href="https://www.linkedin.com/in/giorgitoklikishvili" aria-label="Giorgi's LinkedIn Profile" target="_blank" class="bg-black text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-8 rounded-lg shadow-md text-center fade-in-up" style="transition-delay: 0.4s;">
+                            <div class="mb-6">
+                                <img src="/img/jnz.jpeg" alt="Davit - AI Advisor" class="w-32 h-32 rounded-full mx-auto object-cover shadow-lg">
+                            </div>
+                            <h4 class="text-xl font-bold mb-2">Davit</h4>
+                            <p class="text-gray-500 mb-3 font-semibold">AI Advisor</p>
+                            <p class="text-gray-700 mb-4">Leading AI Researcher focused on Natural Language Processing and System Design.</p>
+                            <div class="flex justify-center">
+                                <a href="https://www.linkedin.com/in/davitj/" aria-label="Davit's LinkedIn Profile" target="_blank" class="bg-black text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Principles -->
+                <section id="principles" class="py-20 bg-gray-50 eb-garamond-200">
+                    <div class="container mx-auto px-6">
+                        <div class="text-center mb-12 fade-in-up">
+                            <h2 class="text-3xl md:text-4xl font-bold mb-3">Our Principles: How We Build Trust</h2>
+                            <p class="text-gray-600 max-w-3xl mx-auto">
+                                In a world of political polarization and AI hype, trust is everything. It isn't claimed; it is earned through rigorous and transparent practices. Our work is grounded in three core principles:
+                            </p>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-3 gap-12">
+                            <div class="bg-white p-8 rounded-lg shadow-lg fade-in-up" style="transition-delay: 0.2s;">
+                                <h4 class="text-xl font-bold mb-4">Expertise-Led, AI-Powered</h4>
+                                <p class="text-gray-600">
+                                    Our technology serves our methodology, not the other way around. Our AI learns from a sophisticated knowledge graph and annotation rules meticulously crafted by our human experts. This ensures our analysis is always grounded in academically rigorous principles.
+                                </p>
+                            </div>
+                            
+                            <div class="bg-white p-8 rounded-lg shadow-lg fade-in-up" style="transition-delay: 0.4s;">
+                                <h4 class="text-xl font-bold mb-4">Rigorously Non-Partisan</h4>
+                                <p class="text-gray-600">
+                                    We are committed to objectivity. To mitigate bias, our research and validation teams are intentionally built to represent a diversity of political and ideological perspectives. Our processes are designed to challenge partisan interpretations and produce the most neutral analysis possible.
+                                </p>
+                            </div>
+                            
+                            <div class="bg-white p-8 rounded-lg shadow-lg fade-in-up" style="transition-delay: 0.6s;">
+                                <h4 class="text-xl font-bold mb-4">A Commitment to Transparency</h4>
+                                <p class="text-gray-600">
+                                    We believe the best way to foster trust is to be open about our methods. We are working towards making the core definitions of our ViniciGraph public, allowing for academic and public scrutiny of the very framework that powers our insights.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+        <!-- CTA Section -->
+        <section id="cta" class="bg-cta text-white py-20">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 fade-in-up">Ready to Go Deeper?</h2>
+                <p class="max-w-2xl mx-auto mb-8 fade-in-up" style="transition-delay: 0.2s;">Interested in a demo of the Vinici Platform for your organization? Have a question for our research team? We'd love to hear from you.</p>
+                <form class="max-w-lg mx-auto flex flex-col gap-4 fade-in-up" style="transition-delay: 0.4s;" id="contact-form">
+                    <input type="text" name="user_name" placeholder="Your Name" class="w-full px-4 py-3 bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500" required>
+                    <input type="email" name="user_email" placeholder="Your Email" class="w-full px-4 py-3 bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500" required>
+                    <textarea name="message" rows="4" placeholder="Message" class="w-full px-4 py-3 bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"></textarea>
+                    <button type="submit" class="bg-gray-600 text-white px-6 py-3 font-semibold hover:bg-gray-700 transition-colors">Send Message</button>
                 </form>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
+    </main>
 
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-logo">
-                <img src="/img/logo.png" alt="Vinici Logo">
-                <p>Empowering citizens through data-driven clarity. Know them by what they say, hold them accountable for what they do.</p>
+    <!-- Footer -->
+   <!-- Footer -->
+<footer class="bg-white border-t border-gray-200 py-12">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-start text-center md:text-left space-y-8 md:space-y-0 md:space-x-8">
+            <!-- Footer Logo and Description -->
+            <div class="flex flex-col space-y-4 md:max-w-sm">
+                <a href="#home" class="text-2xl font-bold">Vinici</a>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    Empowering citizens through data-driven clarity. Know them by what they say, hold them accountable for what they do.
+                </p>
             </div>
-            <div class="footer-nav">
-                <h3>Quick Links</h3>
-                <!-- Strategic Edit: Updated footer links to match the new, streamlined page structure. -->
-                <ul class="footer-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#products">Our Tools</a></li>
-                    <li><a href="#how-it-works">Methodology</a></li>
-                    <li><a href="#case-study">Case Study</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-contact">
-                <h3>Connect With Us</h3>
-                <div class="contact-info">
-                    <p><i class="fas fa-envelope"></i> <a href="mailto:hello@vinici.ai">hello@vinici.ai</a></p>
+            
+            <!-- Quick Links -->
+            <div class="flex flex-col space-y-4">
+                <h3 class="font-semibold text-gray-900">Quick Links</h3>
+                <div class="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-2">
+                    <a href="#home" class="text-gray-600 hover:text-gray-900">Home</a>
+                    <a href="#products" class="text-gray-600 hover:text-gray-900">Our Tools</a>
+                    <a href="#how-it-works" class="text-gray-600 hover:text-gray-900">Methodology</a>
+                    <a href="#case-study" class="text-gray-600 hover:text-gray-900">Case Study</a>
+                    <a href="#about" class="text-gray-600 hover:text-gray-900">About Us</a>
+                    <a href="#contact" class="text-gray-600 hover:text-gray-900">Contact</a>
                 </div>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/company/viniciai" aria-label="Vinici on LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://www.facebook.com/vinici.ge" aria-label="Vinici on Facebook"><i class="fab fa-facebook"></i></a>
+            </div>
+            
+            <!-- Connect With Us -->
+            <div class="flex flex-col space-y-4">
+                <h3 class="font-semibold text-gray-900">Connect With Us</h3>
+                <div class="flex flex-col space-y-2">
+                    <a href="mailto:hello@vinici.ai" class="text-gray-600 hover:text-gray-900 text-sm">
+                        hello@vinici.ai
+                    </a>
+                    <div class="flex space-x-4 justify-center md:justify-start mt-2">
+                        <a href="https://www.linkedin.com/company/viniciai" aria-label="Vinici on LinkedIn" class="text-gray-600 hover:text-gray-900">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="https://www.facebook.com/vinici.ge" aria-label="Vinici on Facebook" class="text-gray-600 hover:text-gray-900">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="copyright">
-            <p>© <span id="currentYear"></span> Vinici. All Rights Reserved.</p>
+        
+        <!-- Copyright -->
+        <div class="mt-8 pt-8 border-t border-gray-200 text-center text-gray-500 text-sm">
+            <p>&copy; <span id="currentYear">2025</span> Vinici. All Rights Reserved.</p>
         </div>
     </div>
 </footer>
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+
     <script>
-      // EmailJS Initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if(targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+
+                        // Close mobile menu on link click
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+
+            // Simple fade-in-up animation on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
+
+            const elementsToAnimate = document.querySelectorAll('.fade-in-up');
+            elementsToAnimate.forEach(el => {
+                observer.observe(el);
+            });
+
+
+            const slides = document.querySelectorAll('.slide');
+            let currentSlide = -1;
+            
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    // Remove 'active' class from all slides
+                    slide.classList.remove('active');
+                    // Add 'active' class to the target slide
+                    if (i === index) {
+                        slide.classList.add('active');
+                    }
+                });
+            }
+
+            function nextSlide() {
+                // Calculate the index of the next slide, looping back to the start
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+            nextSlide()
+            // Set an interval to automatically change the slide every 5 seconds
+            setInterval(nextSlide, 5000);
+
+            // EmailJS Initialization
       emailjs.init("cle3P8QI6-LSwnNzG"); // Replace with your actual EmailJS User ID
 
       // Contact Form Submission
@@ -286,76 +521,7 @@
             });
         });
       }
-
-      // Mobile Navigation Toggle
-      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-      const navLinksMenu = document.getElementById('nav-links-menu');
-
-      if (mobileNavToggle && navLinksMenu) {
-          mobileNavToggle.addEventListener('click', () => {
-              navLinksMenu.classList.toggle('active');
-              const isExpanded = navLinksMenu.classList.contains('active');
-              mobileNavToggle.setAttribute('aria-expanded', isExpanded);
-              // Optional: Change icon from bars to times and vice-versa
-              const icon = mobileNavToggle.querySelector('i');
-              if (isExpanded) {
-                  icon.classList.remove('fa-bars');
-                  icon.classList.add('fa-times');
-              } else {
-                  icon.classList.remove('fa-times');
-                  icon.classList.add('fa-bars');
-              }
-          });
-      }
-
-      // Copyright Year
-      const currentYearSpan = document.getElementById("currentYear");
-      if (currentYearSpan) {
-        currentYearSpan.textContent = new Date().getFullYear();
-      }
-
-      // Smooth scrolling for anchor links & header offset
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-          anchor.addEventListener('click', function (e) {
-              e.preventDefault();
-              const targetId = this.getAttribute('href');
-              if (targetId.length > 1) { // Make sure it's not just "#"
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    const headerOffset = document.querySelector('header').offsetHeight || 70; // Adjust if header height changes
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: "smooth"
-                    });
-
-                    // If mobile nav is open, close it after clicking a link
-                    if (navLinksMenu && navLinksMenu.classList.contains('active')) {
-                        navLinksMenu.classList.remove('active');
-                        mobileNavToggle.setAttribute('aria-expanded', 'false');
-                        const icon = mobileNavToggle.querySelector('i');
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
-                    }
-                }
-              }
-          });
-      });
-
-      // Header scroll effect
-        const header = document.querySelector('header');
-        if(header) {
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    header.classList.add('header-scrolled');
-                } else {
-                    header.classList.remove('header-scrolled');
-                }
-            });
-        }
-
+        });
     </script>
 </body>
 </html>
