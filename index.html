@@ -86,6 +86,21 @@
             display: inline;
             height: 40px;
         }
+        .responsive-video-container {
+  position: relative;
+  padding-top: 56.25%; /* This creates a 16:9 aspect ratio (9 / 16 = 0.5625) */
+  height: 0;
+  overflow: hidden;
+}
+
+.responsive-video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
     </style>
 </head>
 <body class="bg-white text-gray-800 font-sans">
@@ -198,13 +213,16 @@
 
                 <div class="max-w-4xl mx-auto rounded-lg shadow-2xl overflow-hidden fade-in-up"
                     style="transition-delay: 0.2s;">
-                    <div class="aspect-w-16 aspect-h-9">
-                        <iframe class="w-full h-full"
-                            src="https://www.youtube.com/embed/1vAELegcdJo?rel=0&modestbranding=1&showinfo=0&controls=1"
-                            title="YouTube video player" frameborder="0" allow="autoplay; encrypted-media"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
+                    <div class="max-w-4xl mx-auto rounded-lg shadow-2xl overflow-hidden responsive-video-container fade-in-up" style="transition-delay: 0.2s;">
+    <iframe 
+        class="w-full h-full" <!-- These classes are now handled by our custom CSS -->
+        src="https://www.youtube.com/embed/1vAELegcdJo?rel=0&modestbranding=1&showinfo=0&controls=1" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="autoplay; encrypted-media" 
+        allowfullscreen>
+    </iframe>
+</div>
                 </div>
             </div>
         </section>
